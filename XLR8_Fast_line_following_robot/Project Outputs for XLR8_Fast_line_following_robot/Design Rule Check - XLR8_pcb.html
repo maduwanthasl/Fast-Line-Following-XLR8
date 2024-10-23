@@ -1,0 +1,414 @@
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html">
+<style type="text/css">
+		h1, h2, h3, h4, h5, h6 {
+			font-family : segoe ui;
+			color : black;
+			background-color : #EDE7D9;
+			padding: 0.3em;
+		}
+
+		h1 {
+			font-size: 1.2em;
+		}		
+
+		h2 {
+			font-size: 1.2em;
+		}
+
+		body {
+			font-family : segoe ui;
+		}
+
+		td, th {
+			padding: 0.5em;
+			text-align : left;
+			width: 10em;
+		}
+		th {
+			background-color : #EEEEEE;
+
+		}
+		th.column1, td.column1 {
+			text-align: left;
+			width : auto;
+		}
+		table {
+			width : 100%;
+			font-size: 0.9em;
+		}
+
+		.DRC_summary_header {
+			padding-bottom : 0.1em;
+			border : 0px solid black;
+			width: 100%;
+			align: left;
+		}
+
+		.DRC_summary_header_col1,
+		.DRC_summary_header_col2, 
+		.DRC_summary_header_col3 {
+			color : black;
+			font-size:100%;
+			padding : 0em;
+			padding-top : 0.2em;
+			padding-bottom 0.2em;
+			border : 0px solid black;
+			vertical-align: top;
+			text-align: left;
+		}
+
+		.DRC_summary_header_col1 {
+			font-weight: bold;
+			width: 9em;
+		}
+
+		.DRC_summary_header_col2 {
+			width: 0.1em;
+		
+		}
+
+		.DRC_summary_header_col3 {
+			width : auto;
+		}
+
+		.header_holder {
+		    Width = 100%;
+		    border = 0px solid green;
+		    padding = 0;
+		}
+
+
+		.front_matter, .front_matter_column1, .front_matter_column2, .front_matter_column3
+		{
+			left : 0;
+			top : 0;
+			padding: 0em;
+			padding-top : 0.1em;
+			border : 0px solid black;
+			width : 100%;
+			vertical-align: top;
+			text-align: left;
+		}
+
+		.front_matter_column1 {
+			width : 8em;
+			font-weight: bold;
+		}
+
+		.front_matter_column2 {
+			width: 0.1em;
+		}
+
+		.front_matter_column3 {
+			width : auto;
+		}
+
+		.total_column1, .total_column {
+			font-weight : bold;
+		}
+		.total_column1 {
+			text-align : left;
+		}
+		.warning, .error {
+			color : red;
+			font-weight : bold;
+		}
+		tr.onmouseout_odd {
+			background-color : #white;
+		}
+		tr.onmouseout_even { 
+			background-color : #FAFAFA;
+		}
+		tr.onmouseover_odd, tr.onmouseover_even { 
+			background-color : #EEEEEE;
+		} 
+		a:link, a:visited, .q a:link,.q a:active,.q {
+			color: #21489e; 
+		}
+		a:link.callback, a:visited.callback { 
+			color: #21489e;
+		}
+		a:link.customize, a:visited.customize {
+			color: #C0C0C0;
+			position: absolute; 
+			right: 10px;
+		}	
+		p.contents_level1 {
+			font-weight : bold;
+			font-size : 110%;
+			margin : 0.5em;
+		}
+		p.contents_level2 {
+			position : relative;
+			left : 20px;
+			margin : 0.5em;
+		}
+	</style><script type="text/javascript">
+		function coordToMils(coord) {
+			var number = coord / 10000;
+			
+			if (number != number.toFixed(3))
+				number = number.toFixed(3);
+
+			return number + 'mil'
+		}
+
+		function coordToMM(coord) {
+			var number = 0.0254 * coord / 10000;
+			
+			if (number != number.toFixed(4))
+				number = number.toFixed(4);
+			
+			return number + 'mm'
+		}
+	
+		function convertCoord(coordNode, units) {
+			for (var i = 0; i < coordNode.childNodes.length; i++) {
+				coordNode.removeChild(coordNode.childNodes[i]);
+			}
+
+			var coord = coordNode.getAttribute('value');
+			if (coord != null) {
+				if (units == 'mm') {
+					textNode = document.createTextNode(coordToMM(coord));
+					coordNode.appendChild(textNode);
+				} else if (units == 'mil') {
+					textNode = document.createTextNode(coordToMils(coord));		
+					coordNode.appendChild(textNode);	
+				}
+			}
+		}
+	
+		function convertUnits(unitNode, units) {
+			for (var i = 0; i < unitNode.childNodes.length; i++) {
+				unitNode.removeChild(unitNode.childNodes[i]);		
+			}
+		
+			textNode = document.createTextNode(units); 
+			unitNode.appendChild(textNode);
+		}
+	
+		function changeUnits(radio_input, units) {
+			if (radio_input.checked) {
+			
+				var elements = document.getElementsByName('coordinate');
+				if (elements) {
+					for (var i = 0; i < elements.length; i++) {
+						convertCoord(elements[i], units);
+					}
+				}
+	
+				var elements = document.getElementsByName('units');
+				if (elements) {
+					for (var i = 0; i < elements.length; i++) {
+						convertUnits(elements[i], units);
+					}
+				}
+			}
+		}
+	</script><title>Design Rule Verification Report</title>
+</head>
+<body onload=""><img ALT="Altium" src="
+			file://F:\altium\AD24\Templates\AD_logo.png
+		"><h1>Design Rule Verification Report</h1>
+<table class="header_holder">
+<td class="column1">
+<table class="front_matter">
+<tr class="front_matter">
+<td class="front_matter_column1">Date:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">10/23/2024</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Time:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">5:12:30 PM</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Elapsed Time:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">00:00:02</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Filename:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3"><a href="file:///F:\altium\XLR8 Fast Line Following Robot\XLR8_Fast_line_following_robot\XLR8_pcb.PcbDoc" class="file"><acronym title="F:\altium\XLR8 Fast Line Following Robot\XLR8_Fast_line_following_robot\XLR8_pcb.PcbDoc">F:\altium\XLR8 Fast Line Following Robot\XLR8_Fast_line_following_robot\XLR8_pcb.PcbDoc</acronym></a></td>
+</tr>
+</table>
+</td>
+<td class="column2">
+<table class="DRC_summary_header">
+<tr>
+<td class="DRC_summary_header_col1">Warnings:</td>
+<td class="DRC_summary_header_col2"></td>
+<td class="DRC_summary_header_col3">0</td></tr>
+<tr>
+<td class="DRC_summary_header_col1">Rule Violations:</td>
+<td class="DRC_summary_header_col2"></td>
+<td class="DRC_summary_header_col3" style="color : red">26</td></tr>
+</table>
+</td>
+</table><a name="IDFG1L33M1BASQH4WNVPOGYCQPG2ZNBITKRAT0TBCHKSA0J5S1INF"><h2>Summary</h2></a><table>
+<tr>
+<th class="column1">Warnings</th>
+<th class="column2">Count</th>
+</tr>
+<tr>
+<td style="font-weight : bold; text-align : right" class="column1">Total</td>
+<td style="font-weight : bold" class="column2">0</td>
+</tr>
+</table><br><table>
+<tr>
+<th class="column1">Rule Violations</th>
+<th class="column2">Count</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDDIGFABQEYDEDK4YL5EIMLERS5C0Y3OD3KQW1BFIUKYCIEJWQOFLL">Clearance Constraint (Gap=0.254mm) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDUAIWOU1O4GS3KXGHY2UXW3IO3DJIUTUCBXELOKMLGHYI1FQKHNZM">Short-Circuit Constraint (Allowed=No) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDSJKDTYSJXE3DJGFUHGFU3SGMSMO4X4CDDILQUQKE2MGAZWZATV5K">Un-Routed Net Constraint ( (All) )</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDBHS4QEKD3QLJDJIPHU1K34Z5FMZ5KRKZAYEEW4DK3CKJCEZYIVED">Modified Polygon (Allow modified: No), (Allow shelved: No)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDURTADSUDQKDLBVQQXOEFOAQM3BOOQKZENDH5LEBNSVBZYLX3V4LJ">Power Plane Connect Rule(Relief Connect )(Expansion=0.508mm) (Conductor Width=0.254mm) (Air Gap=0.254mm) (Entries=4) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#ID4TM0H4BTI4X4E34UGUEUJXRVUMQDMKVPUCIU4NKIX1SWMXKTTDXF">Hole Size Constraint (Min=0.025mm) (Max=2.54mm) (All)</a></td>
+<td class="column2">4</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDGUBIEUHZVESXB2I24VDW1RP4NILDNDXA5URJGTG2WVPQ0LEYOXYI">Hole To Hole Clearance (Gap=0.254mm) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDJA1GU4JWY2HVJVZSUEFJ2GHJAPAB11VSYPLPKQOKTFRQOJQ3THCC">Minimum Solder Mask Sliver (Gap=0.254mm) (All),(All)</a></td>
+<td class="column2">16</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDWX04BUXJR0M2O0L2FXSMXVJ4JMRWMAA44XCCS3KSFMOZCMTXR4GG">Silk To Solder Mask (Clearance=0.254mm) (IsPad),(All)</a></td>
+<td class="column2">5</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDZEV5K24SG5VIEOWG2QHVDHAPUGOXS0VWP5S1AVDSNGZYTH1KOXAM">Silk to Silk (Clearance=0.127mm) (All),(All)</a></td>
+<td class="column2">1</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDUOM3N3X1M1LOO0NRGOCTKMPITN02VVEPICA0SPKVMNOJN2WUOMAI">Net Antennae (Tolerance=0mm) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDLIGAFD3LYDIZIWS01IGC4YU54KRML00YDZQM2OCXUIUQ0U4ZED1I">Height Constraint (Min=0mm) (Max=25.4mm) (Prefered=12.7mm) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr>
+<td style="font-weight : bold; text-align : right" class="column1">Total</td>
+<td style="font-weight : bold" class="column2">26</td>
+</tr>
+</table><br><a name="ID4TM0H4BTI4X4E34UGUEUJXRVUMQDMKVPUCIU4NKIX1SWMXKTTDXF"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Hole Size Constraint (Min=0.025mm) (Max=2.54mm) (All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=F:\altium\XLR8 Fast Line Following Robot\XLR8_Fast_line_following_robot\XLR8_pcb.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4760.69mil|Location2.X=4887.924mil|Location1.Y=5594.897mil|Location2.Y=5722.131mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=F:\altium\XLR8 Fast Line Following Robot\XLR8_Fast_line_following_robot\XLR8_pcb.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4760.69mil|Location2.X=4887.924mil|Location1.Y=5594.897mil|Location2.Y=5722.131mil|Absolute=True">Hole Size Constraint: (3.2mm &gt; 2.54mm) Pad Free-MH(10.5mm,-74.25mm) on Multi-Layer Actual Hole Size = 3.2mm</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=F:\altium\XLR8 Fast Line Following Robot\XLR8_Fast_line_following_robot\XLR8_pcb.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3933.918mil|Location2.X=4061.152mil|Location1.Y=5594.897mil|Location2.Y=5722.131mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=F:\altium\XLR8 Fast Line Following Robot\XLR8_Fast_line_following_robot\XLR8_pcb.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3933.918mil|Location2.X=4061.152mil|Location1.Y=5594.897mil|Location2.Y=5722.131mil|Absolute=True">Hole Size Constraint: (3.2mm &gt; 2.54mm) Pad Free-MH(-10.5mm,-74.25mm) on Multi-Layer Actual Hole Size = 3.2mm</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=F:\altium\XLR8 Fast Line Following Robot\XLR8_Fast_line_following_robot\XLR8_pcb.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4760.69mil|Location2.X=4887.924mil|Location1.Y=5220.881mil|Location2.Y=5348.115mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=F:\altium\XLR8 Fast Line Following Robot\XLR8_Fast_line_following_robot\XLR8_pcb.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4760.69mil|Location2.X=4887.924mil|Location1.Y=5220.881mil|Location2.Y=5348.115mil|Absolute=True">Hole Size Constraint: (3.2mm &gt; 2.54mm) Pad Free-MH(10.5mm,-83.75mm) on Multi-Layer Actual Hole Size = 3.2mm</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=F:\altium\XLR8 Fast Line Following Robot\XLR8_Fast_line_following_robot\XLR8_pcb.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3933.918mil|Location2.X=4061.152mil|Location1.Y=5220.881mil|Location2.Y=5348.115mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=F:\altium\XLR8 Fast Line Following Robot\XLR8_Fast_line_following_robot\XLR8_pcb.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3933.918mil|Location2.X=4061.152mil|Location1.Y=5220.881mil|Location2.Y=5348.115mil|Absolute=True">Hole Size Constraint: (3.2mm &gt; 2.54mm) Pad Free-MH(-10.5mm,-83.75mm) on Multi-Layer Actual Hole Size = 3.2mm</acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br><a name="IDJA1GU4JWY2HVJVZSUEFJ2GHJAPAB11VSYPLPKQOKTFRQOJQ3THCC"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Minimum Solder Mask Sliver (Gap=0.254mm) (All),(All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=F:\altium\XLR8 Fast Line Following Robot\XLR8_Fast_line_following_robot\XLR8_pcb.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4340.706mil|Location2.X=4351.956mil|Location1.Y=8141.92mil|Location2.Y=8153.17mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=F:\altium\XLR8 Fast Line Following Robot\XLR8_Fast_line_following_robot\XLR8_pcb.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4340.706mil|Location2.X=4351.956mil|Location1.Y=8141.92mil|Location2.Y=8153.17mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.197mm &lt; 0.254mm) Between Pad C10-1(-0.889mm,-10.304mm) on Top Layer And Pad C10-2(-0.889mm,-11.754mm) on Top Layer [Top Solder] Mask Sliver [0.197mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=F:\altium\XLR8 Fast Line Following Robot\XLR8_Fast_line_following_robot\XLR8_pcb.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4693.706mil|Location2.X=4704.956mil|Location1.Y=8141.92mil|Location2.Y=8153.17mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=F:\altium\XLR8 Fast Line Following Robot\XLR8_Fast_line_following_robot\XLR8_pcb.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4693.706mil|Location2.X=4704.956mil|Location1.Y=8141.92mil|Location2.Y=8153.17mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.197mm &lt; 0.254mm) Between Pad C11-1(8.077mm,-10.304mm) on Top Layer And Pad C11-2(8.077mm,-11.754mm) on Top Layer [Top Solder] Mask Sliver [0.197mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=F:\altium\XLR8 Fast Line Following Robot\XLR8_Fast_line_following_robot\XLR8_pcb.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5046.706mil|Location2.X=5057.956mil|Location1.Y=8141.92mil|Location2.Y=8153.17mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=F:\altium\XLR8 Fast Line Following Robot\XLR8_Fast_line_following_robot\XLR8_pcb.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5046.706mil|Location2.X=5057.956mil|Location1.Y=8141.92mil|Location2.Y=8153.17mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.197mm &lt; 0.254mm) Between Pad C12-1(17.043mm,-10.304mm) on Top Layer And Pad C12-2(17.043mm,-11.754mm) on Top Layer [Top Solder] Mask Sliver [0.197mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=F:\altium\XLR8 Fast Line Following Robot\XLR8_Fast_line_following_robot\XLR8_pcb.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5399.706mil|Location2.X=5410.956mil|Location1.Y=8141.92mil|Location2.Y=8153.17mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=F:\altium\XLR8 Fast Line Following Robot\XLR8_Fast_line_following_robot\XLR8_pcb.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5399.706mil|Location2.X=5410.956mil|Location1.Y=8141.92mil|Location2.Y=8153.17mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.197mm &lt; 0.254mm) Between Pad C13-1(26.01mm,-10.304mm) on Top Layer And Pad C13-2(26.01mm,-11.754mm) on Top Layer [Top Solder] Mask Sliver [0.197mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=F:\altium\XLR8 Fast Line Following Robot\XLR8_Fast_line_following_robot\XLR8_pcb.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5752.706mil|Location2.X=5763.956mil|Location1.Y=8141.92mil|Location2.Y=8153.17mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=F:\altium\XLR8 Fast Line Following Robot\XLR8_Fast_line_following_robot\XLR8_pcb.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5752.706mil|Location2.X=5763.956mil|Location1.Y=8141.92mil|Location2.Y=8153.17mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.197mm &lt; 0.254mm) Between Pad C14-1(34.976mm,-10.304mm) on Top Layer And Pad C14-2(34.976mm,-11.754mm) on Top Layer [Top Solder] Mask Sliver [0.197mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=F:\altium\XLR8 Fast Line Following Robot\XLR8_Fast_line_following_robot\XLR8_pcb.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6149.706mil|Location2.X=6160.956mil|Location1.Y=7795.117mil|Location2.Y=7806.367mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=F:\altium\XLR8 Fast Line Following Robot\XLR8_Fast_line_following_robot\XLR8_pcb.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6149.706mil|Location2.X=6160.956mil|Location1.Y=7795.117mil|Location2.Y=7806.367mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.197mm &lt; 0.254mm) Between Pad C15-1(45.06mm,-19.112mm) on Top Layer And Pad C15-2(45.06mm,-20.562mm) on Top Layer [Top Solder] Mask Sliver [0.197mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=F:\altium\XLR8 Fast Line Following Robot\XLR8_Fast_line_following_robot\XLR8_pcb.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6489.706mil|Location2.X=6500.956mil|Location1.Y=7460.117mil|Location2.Y=7471.367mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=F:\altium\XLR8 Fast Line Following Robot\XLR8_Fast_line_following_robot\XLR8_pcb.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6489.706mil|Location2.X=6500.956mil|Location1.Y=7460.117mil|Location2.Y=7471.367mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.197mm &lt; 0.254mm) Between Pad C16-1(53.696mm,-27.621mm) on Top Layer And Pad C16-2(53.696mm,-29.071mm) on Top Layer [Top Solder] Mask Sliver [0.197mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=F:\altium\XLR8 Fast Line Following Robot\XLR8_Fast_line_following_robot\XLR8_pcb.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6828.706mil|Location2.X=6839.956mil|Location1.Y=7100.117mil|Location2.Y=7111.367mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=F:\altium\XLR8 Fast Line Following Robot\XLR8_Fast_line_following_robot\XLR8_pcb.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6828.706mil|Location2.X=6839.956mil|Location1.Y=7100.117mil|Location2.Y=7111.367mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.197mm &lt; 0.254mm) Between Pad C17-1(62.306mm,-36.765mm) on Top Layer And Pad C17-2(62.306mm,-38.215mm) on Top Layer [Top Solder] Mask Sliver [0.197mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=F:\altium\XLR8 Fast Line Following Robot\XLR8_Fast_line_following_robot\XLR8_pcb.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6997.706mil|Location2.X=7008.956mil|Location1.Y=6336.117mil|Location2.Y=6347.367mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=F:\altium\XLR8 Fast Line Following Robot\XLR8_Fast_line_following_robot\XLR8_pcb.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6997.706mil|Location2.X=7008.956mil|Location1.Y=6336.117mil|Location2.Y=6347.367mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.197mm &lt; 0.254mm) Between Pad C18-1(66.599mm,-56.171mm) on Top Layer And Pad C18-2(66.599mm,-57.621mm) on Top Layer [Top Solder] Mask Sliver [0.197mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=F:\altium\XLR8 Fast Line Following Robot\XLR8_Fast_line_following_robot\XLR8_pcb.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2015.706mil|Location2.X=2026.956mil|Location1.Y=6316.117mil|Location2.Y=6327.367mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=F:\altium\XLR8 Fast Line Following Robot\XLR8_Fast_line_following_robot\XLR8_pcb.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2015.706mil|Location2.X=2026.956mil|Location1.Y=6316.117mil|Location2.Y=6327.367mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.197mm &lt; 0.254mm) Between Pad C3-1(-59.944mm,-56.679mm) on Top Layer And Pad C3-2(-59.944mm,-58.129mm) on Top Layer [Top Solder] Mask Sliver [0.197mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=F:\altium\XLR8 Fast Line Following Robot\XLR8_Fast_line_following_robot\XLR8_pcb.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2182.706mil|Location2.X=2193.956mil|Location1.Y=7091.117mil|Location2.Y=7102.367mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=F:\altium\XLR8 Fast Line Following Robot\XLR8_Fast_line_following_robot\XLR8_pcb.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2182.706mil|Location2.X=2193.956mil|Location1.Y=7091.117mil|Location2.Y=7102.367mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.197mm &lt; 0.254mm) Between Pad C4-1(-55.702mm,-36.994mm) on Top Layer And Pad C4-2(-55.702mm,-38.444mm) on Top Layer [Top Solder] Mask Sliver [0.197mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=F:\altium\XLR8 Fast Line Following Robot\XLR8_Fast_line_following_robot\XLR8_pcb.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2514.706mil|Location2.X=2525.956mil|Location1.Y=7440.117mil|Location2.Y=7451.367mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=F:\altium\XLR8 Fast Line Following Robot\XLR8_Fast_line_following_robot\XLR8_pcb.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2514.706mil|Location2.X=2525.956mil|Location1.Y=7440.117mil|Location2.Y=7451.367mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.197mm &lt; 0.254mm) Between Pad C5-1(-47.269mm,-28.129mm) on Top Layer And Pad C5-2(-47.269mm,-29.579mm) on Top Layer [Top Solder] Mask Sliver [0.197mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=F:\altium\XLR8 Fast Line Following Robot\XLR8_Fast_line_following_robot\XLR8_pcb.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2849.706mil|Location2.X=2860.956mil|Location1.Y=7768.117mil|Location2.Y=7779.367mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=F:\altium\XLR8 Fast Line Following Robot\XLR8_Fast_line_following_robot\XLR8_pcb.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2849.706mil|Location2.X=2860.956mil|Location1.Y=7768.117mil|Location2.Y=7779.367mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.197mm &lt; 0.254mm) Between Pad C6-1(-38.76mm,-19.798mm) on Top Layer And Pad C6-2(-38.76mm,-21.248mm) on Top Layer [Top Solder] Mask Sliver [0.197mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=F:\altium\XLR8 Fast Line Following Robot\XLR8_Fast_line_following_robot\XLR8_pcb.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3281.706mil|Location2.X=3292.956mil|Location1.Y=8141.92mil|Location2.Y=8153.17mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=F:\altium\XLR8 Fast Line Following Robot\XLR8_Fast_line_following_robot\XLR8_pcb.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3281.706mil|Location2.X=3292.956mil|Location1.Y=8141.92mil|Location2.Y=8153.17mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.197mm &lt; 0.254mm) Between Pad C7-1(-27.788mm,-10.304mm) on Top Layer And Pad C7-2(-27.788mm,-11.754mm) on Top Layer [Top Solder] Mask Sliver [0.197mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=F:\altium\XLR8 Fast Line Following Robot\XLR8_Fast_line_following_robot\XLR8_pcb.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3634.706mil|Location2.X=3645.956mil|Location1.Y=8141.92mil|Location2.Y=8153.17mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=F:\altium\XLR8 Fast Line Following Robot\XLR8_Fast_line_following_robot\XLR8_pcb.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3634.706mil|Location2.X=3645.956mil|Location1.Y=8141.92mil|Location2.Y=8153.17mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.197mm &lt; 0.254mm) Between Pad C8-1(-18.821mm,-10.304mm) on Top Layer And Pad C8-2(-18.821mm,-11.754mm) on Top Layer [Top Solder] Mask Sliver [0.197mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=F:\altium\XLR8 Fast Line Following Robot\XLR8_Fast_line_following_robot\XLR8_pcb.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3987.706mil|Location2.X=3998.956mil|Location1.Y=8141.92mil|Location2.Y=8153.17mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=F:\altium\XLR8 Fast Line Following Robot\XLR8_Fast_line_following_robot\XLR8_pcb.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3987.706mil|Location2.X=3998.956mil|Location1.Y=8141.92mil|Location2.Y=8153.17mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.197mm &lt; 0.254mm) Between Pad C9-1(-9.855mm,-10.304mm) on Top Layer And Pad C9-2(-9.855mm,-11.754mm) on Top Layer [Top Solder] Mask Sliver [0.197mm]</acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br><a name="IDWX04BUXJR0M2O0L2FXSMXVJ4JMRWMAA44XCCS3KSFMOZCMTXR4GG"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Silk To Solder Mask (Clearance=0.254mm) (IsPad),(All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=F:\altium\XLR8 Fast Line Following Robot\XLR8_Fast_line_following_robot\XLR8_pcb.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4146.379mil|Location2.X=4157.629mil|Location1.Y=5083.952mil|Location2.Y=5095.202mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=F:\altium\XLR8 Fast Line Following Robot\XLR8_Fast_line_following_robot\XLR8_pcb.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4146.379mil|Location2.X=4157.629mil|Location1.Y=5083.952mil|Location2.Y=5095.202mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.075mm &lt; 0.254mm) Between Pad C2-1(-7.239mm,-87.826mm) on Top Layer And Track (-6.439mm,-90.776mm)(-6.439mm,-86.951mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.075mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=F:\altium\XLR8 Fast Line Following Robot\XLR8_Fast_line_following_robot\XLR8_pcb.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4094.213mil|Location2.X=4105.463mil|Location1.Y=5083.952mil|Location2.Y=5095.202mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=F:\altium\XLR8 Fast Line Following Robot\XLR8_Fast_line_following_robot\XLR8_pcb.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4094.213mil|Location2.X=4105.463mil|Location1.Y=5083.952mil|Location2.Y=5095.202mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.075mm &lt; 0.254mm) Between Pad C2-1(-7.239mm,-87.826mm) on Top Layer And Track (-8.039mm,-90.776mm)(-8.039mm,-87.576mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.075mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=F:\altium\XLR8 Fast Line Following Robot\XLR8_Fast_line_following_robot\XLR8_pcb.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4146.379mil|Location2.X=4157.629mil|Location1.Y=5046.55mil|Location2.Y=5057.8mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=F:\altium\XLR8 Fast Line Following Robot\XLR8_Fast_line_following_robot\XLR8_pcb.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4146.379mil|Location2.X=4157.629mil|Location1.Y=5046.55mil|Location2.Y=5057.8mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.075mm &lt; 0.254mm) Between Pad C2-2(-7.239mm,-90.526mm) on Top Layer And Track (-6.439mm,-90.776mm)(-6.439mm,-86.951mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.075mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=F:\altium\XLR8 Fast Line Following Robot\XLR8_Fast_line_following_robot\XLR8_pcb.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4094.213mil|Location2.X=4105.463mil|Location1.Y=5046.55mil|Location2.Y=5057.8mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=F:\altium\XLR8 Fast Line Following Robot\XLR8_Fast_line_following_robot\XLR8_pcb.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4094.213mil|Location2.X=4105.463mil|Location1.Y=5046.55mil|Location2.Y=5057.8mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.075mm &lt; 0.254mm) Between Pad C2-2(-7.239mm,-90.526mm) on Top Layer And Track (-8.039mm,-90.776mm)(-8.039mm,-87.576mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.075mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=F:\altium\XLR8 Fast Line Following Robot\XLR8_Fast_line_following_robot\XLR8_pcb.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4291.516mil|Location2.X=4302.766mil|Location1.Y=4977.652mil|Location2.Y=4988.902mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=F:\altium\XLR8 Fast Line Following Robot\XLR8_Fast_line_following_robot\XLR8_pcb.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4291.516mil|Location2.X=4302.766mil|Location1.Y=4977.652mil|Location2.Y=4988.902mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.25mm &lt; 0.254mm) Between Pad IC1-1(-2.29mm,-90.676mm) on Top Layer And Track (-3.115mm,-91.401mm)(-3.115mm,-89.951mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.25mm]</acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br><a name="IDZEV5K24SG5VIEOWG2QHVDHAPUGOXS0VWP5S1AVDSNGZYTH1KOXAM"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Silk to Silk (Clearance=0.127mm) (All),(All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=F:\altium\XLR8 Fast Line Following Robot\XLR8_Fast_line_following_robot\XLR8_pcb.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2056.254mil|Location2.X=2062.504mil|Location1.Y=7066.057mil|Location2.Y=7072.307mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=F:\altium\XLR8 Fast Line Following Robot\XLR8_Fast_line_following_robot\XLR8_pcb.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2056.254mil|Location2.X=2062.504mil|Location1.Y=7066.057mil|Location2.Y=7072.307mil|Absolute=True">Silk To Silk Clearance Constraint: (0.112mm &lt; 0.127mm) Between Arc (-59.914mm,-38.45mm) on Top Overlay And Text "R2" (-59.548mm,-38.389mm) on Top Overlay Silk Text to Silk Clearance [0.112mm]</acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br></body>
+</html>

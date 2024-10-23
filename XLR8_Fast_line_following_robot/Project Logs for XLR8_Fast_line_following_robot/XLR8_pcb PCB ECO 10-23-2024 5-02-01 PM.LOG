@@ -1,0 +1,4 @@
+Removed Pin From Net: NetName=+5-IR Pin=J1-1
+Removed Pin From Net: NetName=+7.4V Pin=J1-3
+Added Pin To Net: NetName=+7.4V Pin=J1-1
+Added Pin To Net: NetName=+5-IR Pin=J1-3

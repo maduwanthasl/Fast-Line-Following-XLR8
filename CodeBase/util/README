@@ -1,0 +1,3 @@
+## Upload the esp01.ino to the esp01 unit and connect RX,TX to the config file's RX TX
+
+## Upload the esp32controller.ino to the esp32 that is connected to the PC. This will receive logging data and send parameters for to be change.  Run the python script to display the data and change parameters. 
